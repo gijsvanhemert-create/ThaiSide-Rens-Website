@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# planning / reference material (not build inputs)
+*.docx
+draaiboek-thaiside-rens.md
+thaiside-rens-variant-d-a-plus-c.html
