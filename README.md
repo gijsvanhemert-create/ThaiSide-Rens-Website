@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ThaiSide Rens — Website
 
-## Getting Started
+Personal website for **ThaiSide Rens**, a content creator documenting life in
+Thailand. The site brings his channels and offerings together in one place:
 
-First, run the development server:
+- His **personal story** (emigration to and life in Thailand)
+- Live **YouTube** and **Instagram** feeds
+- Sales of a paid **Thailand Starter Guide**
+- A **sponsorship** page for brand collaborations
+
+UI copy is in **Dutch**.
+
+## Tech stack
+
+- **[Next.js](https://nextjs.org)** 16 — App Router, Turbopack, React 19, TypeScript
+- **[Tailwind CSS](https://tailwindcss.com)** v4 — configured via CSS (`@theme` in `src/app/globals.css`); no `tailwind.config.js`
+- **[Sanity CMS](https://www.sanity.io)** v6 (`next-sanity`) — embedded Studio at `/studio`
+- **[YouTube Data API v3](https://developers.google.com/youtube/v3)** — powers the homepage video feed
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copy the example env file and fill in your own values:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cp .env.local.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Required environment variables (`.env.local`)
 
-## Learn More
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Sanity project ID (from [sanity.io/manage](https://www.sanity.io/manage)). Until set, the site renders placeholder content and `/studio` shows a config notice. |
+| `NEXT_PUBLIC_SANITY_DATASET` | Sanity dataset name (e.g. `production`). |
+| `NEXT_PUBLIC_SANITY_API_VERSION` | Sanity API version date (e.g. `2024-10-01`). |
+| `YOUTUBE_API_KEY` | YouTube Data API v3 key for the homepage feed. **Server-side only** — never prefix with `NEXT_PUBLIC`. |
 
-To learn more about Next.js, take a look at the following resources:
+> `.env.local` is gitignored. Never commit real keys.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev      # dev server (Turbopack) at http://localhost:3000
+npm run build    # production build
+npm start        # serve the production build
+npm run lint     # ESLint
+```
 
-## Deploy on Vercel
+## Status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Built
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Shared layout** — header, footer, and navigation frame applied across all
+  public pages (`src/app/(site)/`)
+- **Sanity CMS + Verhaal page** — embedded Studio at `/studio`; the `verhaal`
+  (story) singleton is editable and rendered on the site
+- **YouTube feed** — homepage feed of the channel's latest uploads, fetched
+  server-side (key never reaches the client), cached and revalidated hourly.
+  Thumbnails are click-to-load facades that mount an inline embed on click.
+
+### Pending
+
+- **Instagram feed** — live feed via the Facebook Page → Instagram Graph API
+- **Contact form** — email delivery via [Resend](https://resend.com)
+- **Remaining pages** — "Word ThaiSider" (YouTube membership signup), the paid
+  Thailand Starter Guide, gear/affiliate page, and sponsorship
+
+## License
+
+**Private client project — not open source.** All rights reserved. This code is
+not licensed for reuse, redistribution, or public deployment.
