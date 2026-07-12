@@ -32,4 +32,5 @@ No test runner is configured yet.
 - The Studio (`src/app/studio/[[...tool]]/`) renders `sanity.config` via a `'use client'` child (`Studio.tsx`), not directly in the server `page.tsx`. Importing the config into an RSC pulls `sanity` into the server graph, where `swr` resolves to its `react-server` build (no default export) and the Turbopack build fails.
 - Tailwind v4 is configured via CSS (`src/app/globals.css` uses `@import "tailwindcss"` and `@theme`) — there is no `tailwind.config.js`.
 - `next.config.ts` pins `turbopack.root` to this directory to avoid Next inferring the workspace root from an unrelated lockfile in the home directory.
+- Instagram feed: access tokens are generated via Meta's App Dashboard — there is **no** custom OAuth callback route (don't add one). `INSTAGRAM_APP_ID` / `INSTAGRAM_APP_SECRET` live in `.env.local` (see `.env.local.example`).
 - The `.docx` and `.html`/`.md` planning files at the repo root are reference material, not build inputs.
