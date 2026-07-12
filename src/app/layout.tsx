@@ -16,7 +16,7 @@ const anton = Anton({
 export const metadata: Metadata = {
   title: "ThaiSide Rens",
   description:
-    "Volg Rens' avontuur in Thailand — zijn verhaal, gear, guides en meer.",
+    "Volg mijn avontuur in Thailand — mijn verhaal, gear, guides en meer.",
 };
 
 export default function RootLayout({

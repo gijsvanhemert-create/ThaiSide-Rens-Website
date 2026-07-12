@@ -8,7 +8,7 @@ export default function Home() {
           ThaiSide <span className="text-accent-yellow">Rens</span>
         </h1>
         <p className="mx-auto mt-6 max-w-md text-lg text-text-muted">
-          Volg Rens&apos; avontuur in Thailand. Nieuwe video&apos;s, verhalen en
+          Volg mijn avontuur in Thailand. Nieuwe video&apos;s, verhalen en
           tips — recht vanuit de tropen.
         </p>
       </section>

@@ -11,7 +11,7 @@ export function SiteFooter() {
             ThaiSide <span className="text-accent-yellow">Rens</span>
           </p>
           <p className="text-sm text-text-muted">
-            Volg Rens&apos; avontuur in Thailand.
+            Volg mijn avontuur in Thailand.
           </p>
         </div>
 
