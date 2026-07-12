@@ -1,4 +1,5 @@
 import { YouTubeFeed } from "@/components/youtube-feed";
+import { InstagramFeed } from "@/components/instagram-feed";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       </section>
 
       <YouTubeFeed />
+      <InstagramFeed />
     </main>
   );
 }
