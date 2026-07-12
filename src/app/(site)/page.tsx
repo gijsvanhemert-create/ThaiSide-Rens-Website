@@ -1,12 +1,19 @@
+import { YouTubeFeed } from "@/components/youtube-feed";
+
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-4 p-8 text-center">
-      <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-        ThaiSide Rens
-      </h1>
-      <p className="max-w-md text-lg text-foreground/70">
-        De website is in aanbouw. Binnenkort meer.
-      </p>
+    <main className="flex flex-1 flex-col">
+      <section className="mx-auto w-full max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28">
+        <h1 className="font-display text-5xl uppercase tracking-tight text-text sm:text-7xl">
+          ThaiSide <span className="text-accent-yellow">Rens</span>
+        </h1>
+        <p className="mx-auto mt-6 max-w-md text-lg text-text-muted">
+          Volg Rens&apos; avontuur in Thailand. Nieuwe video&apos;s, verhalen en
+          tips — recht vanuit de tropen.
+        </p>
+      </section>
+
+      <YouTubeFeed />
     </main>
   );
 }

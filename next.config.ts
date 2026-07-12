@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
         pathname: "/images/**",
       },
+      {
+        // YouTube video thumbnails.
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/vi/**",
+      },
     ],
   },
 };
