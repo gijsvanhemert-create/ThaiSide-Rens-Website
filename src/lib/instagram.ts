@@ -15,6 +15,14 @@ export const isInstagramConfigured = Boolean(
   process.env.INSTAGRAM_ACCESS_TOKEN,
 );
 
+/**
+ * TEMPORARY kill switch. Set INSTAGRAM_FEED_DISABLED=true in the environment to
+ * stop all live calls to graph.instagram.com; the feed then falls back to its
+ * empty "no content" state. Flip back to unset/false to restore live fetching.
+ */
+export const isInstagramFeedDisabled =
+  process.env.INSTAGRAM_FEED_DISABLED === "true";
+
 export type InstagramPost = {
   id: string;
   caption: string;
@@ -49,6 +57,13 @@ type MediaItem = {
  * 502. Cached and revalidated hourly via the Data Cache (not per request).
  */
 export async function getLatestPosts(limit = 12): Promise<InstagramPost[]> {
+  // TEMPORARY: kill switch for live Instagram calls. While
+  // INSTAGRAM_FEED_DISABLED is truthy we skip graph.instagram.com entirely and
+  // return [], so the homepage shows the same graceful "no content" state as a
+  // missing token. Remove this env var (or set it to false) to re-enable once
+  // Rens' account is confirmed fine.
+  if (isInstagramFeedDisabled) return [];
+
   const token = process.env.INSTAGRAM_ACCESS_TOKEN;
   if (!token) return [];
 
