@@ -8,7 +8,7 @@ export const revalidate = 3600; // 1 hour
 
 export async function GET() {
   try {
-    const posts = await getLatestPosts(8);
+    const posts = await getLatestPosts(12);
     return Response.json({ posts });
   } catch (error) {
     console.error("Failed to load Instagram feed:", error);
